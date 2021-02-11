@@ -42,23 +42,55 @@ namespace ConsoleAppProject.App01
 
         public void ConvertDistance()
         {
-            fromUnit = SelectUnit("Please select the form distance unit > ");
-            toUnit = SelectUnit("Please select the to distance unit > ");
-            
-            OutputHeading($"Converting {fromUnit} to {toUnit}");
+            OutputHeading();
 
-            fromDistance = InputDistance($"Please enter the number of {fromUnit} > ");
+            fromUnit = SelectUnit(" Please select the form distance unit > ");
+            toUnit = SelectUnit(" Please select the to distance unit > ");
 
-            //CalculateFeet();
+            Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
+
+            fromDistance = InputDistance($" Please enter the number of {fromUnit} > ");
+
+            CalculateDistance();
 
             OutputDistance();
+        }
+
+        private void CalculateDistance()
+        {
+            if (fromUnit == MILES && toUnit == FEET)
+            {
+                toDistance = fromDistance * FEET_IN_MILES;
+            }
+            else if (fromUnit == FEET && toUnit == MILES)
+            {
+                toDistance = fromDistance / FEET_IN_MILES;
+            }
+            else if (fromUnit == MILES && toUnit ==METRES)
+            {
+                toDistance = fromDistance * METRES_IN_MILES;
+            }
+            else if (fromUnit == METRES && toUnit == MILES)
+            {
+                toDistance = fromDistance / METRES_IN_MILES;
+            }
+            else if (fromUnit == FEET && toUnit == METRES)
+            {
+                toDistance = fromDistance / FEET_IN_METRES;
+            }
+            else if (fromUnit == METRES && toUnit == FEET)
+            {
+                toDistance = fromDistance * FEET_IN_METRES;
+            }
         }
 
         private string SelectUnit(string prompt)
         {
             string choice = DisplayChoices(prompt);
 
-            return ExecuteChoice(choice);
+            string unit = ExecuteChoice(choice);
+            Console.WriteLine($"\n You have chosen {unit}");
+            return unit;
         }
 
         private static string ExecuteChoice(string choice)
@@ -109,7 +141,7 @@ namespace ConsoleAppProject.App01
         /// </summary>
         private void OutputDistance()
         {
-            Console.WriteLine($" {fromDistance} {fromUnit}" +
+            Console.WriteLine($"\n {fromDistance} {fromUnit}" +
                 $" is {toDistance} {toUnit}!");
         }
 
@@ -118,15 +150,13 @@ namespace ConsoleAppProject.App01
         /// Code to display a heading at the top of the program,
         /// that shows what the program is and the author.
         /// </summary>
-        private void OutputHeading(String prompt)
+        private void OutputHeading()
         {
             Console.WriteLine("\n-----------------------------------");
             Console.WriteLine("          Distance Converter         ");
             Console.WriteLine("             by Max Roe              ");
             Console.WriteLine("-----------------------------------\n");
 
-            Console.WriteLine(prompt);
-            Console.WriteLine();
         }
 
     }
