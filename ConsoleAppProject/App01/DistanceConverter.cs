@@ -27,6 +27,7 @@ namespace ConsoleAppProject.App01
         public string FromUnit { get; set; }
         public string ToUnit { get; set; }
 
+<<<<<<< HEAD
         public DistanceUnits DistanceUnits
         {
             get => default;
@@ -35,6 +36,8 @@ namespace ConsoleAppProject.App01
             }
         }
 
+=======
+>>>>>>> 41fdf28bbf222d0aaa5a0bc766c1f1b39ee243ea
         public DistanceConverter()
         {
             FromUnit = MILES;
