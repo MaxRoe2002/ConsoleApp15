@@ -30,6 +30,14 @@ namespace ConsoleAppProject.App02
         public const double Obese2 = 39.9;
         public const double Obese3 = 40.0;
 
+        public ConsoleHelper ConsoleHelper
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void OutputUnits()
         {
             Console.WriteLine("Please choose between: ");
