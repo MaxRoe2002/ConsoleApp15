@@ -1,12 +1,8 @@
-<<<<<<< HEAD
+
 ﻿using System;
 using System.Runtime;
 using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
-=======
-﻿using ConsoleAppProject.App01;
-using System;
->>>>>>> 41fdf28bbf222d0aaa5a0bc766c1f1b39ee243ea
 
 namespace ConsoleAppProject
 {
@@ -35,9 +31,9 @@ namespace ConsoleAppProject
             Console.WriteLine("BNU CO453 Applications Programming 2020-2021!");
             Console.WriteLine();
 
-            DistanceConverter converter = new DistanceConverter();
+           //istanceConverter converter = new DistanceConverter();
 
-<<<<<<< HEAD
+
             BMI calculator = new BMI();
             calculator.PrintHeading();
             calculator.OutputUnits();
@@ -50,9 +46,7 @@ namespace ConsoleAppProject
             //DistanceConverter converter = new DistanceConverter();
 
             //converter.ConvertDistance();
-=======
-            converter.ConvertDistance();
->>>>>>> 41fdf28bbf222d0aaa5a0bc766c1f1b39ee243ea
+
         }
     }
 }
