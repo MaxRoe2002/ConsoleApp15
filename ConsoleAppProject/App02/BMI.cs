@@ -30,6 +30,14 @@ namespace ConsoleAppProject.App02
         public const double Obese2 = 39.9;
         public const double Obese3 = 40.0;
 
+        public double Index { get; set; }
+        public double Kilograms { get; set; }
+        public int Centimetres { get; set; }
+        public int Pounds { get; set; }
+        public int Feet { get; set; }
+        public int Inches { get; set; }
+        public int Stones { get; set; }
+
         public ConsoleHelper ConsoleHelper
         {
             get => default;
