@@ -1,8 +1,7 @@
-
-﻿using System;
-using System.Runtime;
+using System;
 using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
+using ConsoleAppProject.App03;
 
 namespace ConsoleAppProject
 {
@@ -12,19 +11,22 @@ namespace ConsoleAppProject
     /// to start Apps 01 to 05 for CO453 CW1
     /// 
     /// This Project has been modified by:
-    /// Max Roe 11/2/2021
+    /// Max Roe 15/03/2021
     /// </summary>
     public static class Program
     {
-        public static DistanceConverter DistanceConverter
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        private static DistanceConverter converter = new DistanceConverter();
+
+        private static BMI calculator = new BMI();
+
+        private static StudentGrades grades = new StudentGrades();
 
         public static BMI BMI
+        {
+            get => default;
+        }
+
+        public static StudentGrades StudentGrades
         {
             get => default;
             set
@@ -35,26 +37,34 @@ namespace ConsoleAppProject
         public static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            
+
             Console.WriteLine("BNU CO453 Applications Programming 2020-2021!");
             Console.WriteLine();
 
-           //istanceConverter converter = new DistanceConverter();
+            string[] choices = { "Distance Converter", "BMI Calculator", "Student Marks" };
 
 
-            BMI calculator = new BMI();
-            calculator.PrintHeading();
-            calculator.OutputUnits();
-            calculator.GetUnit();
-            calculator.GetWeight();
-            calculator.GetHeight();
-            calculator.CalculateBMI();
-            calculator.OutputResult();
+            int choiceNo = ConsoleHelper.MakeChoice(choices);
 
-            //DistanceConverter converter = new DistanceConverter();
-
-            //converter.ConvertDistance();
-
+            if (choiceNo == 1)
+            {
+                converter.ConvertDistance();
+            }
+            else if (choiceNo == 2)
+            {
+                calculator.PrintHeading();
+                calculator.OutputUnits();
+                calculator.GetUnit();
+                calculator.GetWeight();
+                calculator.GetHeight();
+                calculator.CalculateBMI();
+                calculator.OutputResult();
+            }
+            else if (choiceNo == 3)
+            {
+                grades.DisplayMenu();
+            }
+            else Console.WriteLine("Invalid Choice !");
         }
     }
 }
