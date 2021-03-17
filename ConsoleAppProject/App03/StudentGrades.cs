@@ -2,26 +2,53 @@
 
 namespace ConsoleAppProject.App03
 {
+    /// <summary>
+    /// Application for converting marks into grades and calculating
+    /// the mean, maximum and minimum mark that were entered.
+    /// </summary>
     public class StudentGrades
     {
-        // Constants
+        // Constants (Grade Boundaries)
 
         public const int LowestMark = 0;
+
         public const int LowestGradeD = 40;
+
         public const int LowestGradeC = 50;
+
         public const int LowestGradeB = 60;
+
         public const int LowestGradeA = 70;
+
         public const int HighestMark = 100;
 
         // Properties
-
         public string[] Students { get; set; }
-        public int[] Marks { get; set; }
-        public int[] GradeProfile { get; set; }
-        public double[] Mean { get; set; }
-        public int[] Minimum { get; set; }
-        public int[] Maximum { get; set; }
 
+        public int[] Marks { get; set; }
+
+        public int[] GradeProfile { get; set; }
+
+        public double Mean { get; set; }
+
+        public int Minimum { get; set; }
+
+        public int Maximum { get; set; }
+
+        /// <summary>
+        /// Used by class diagram
+        /// </summary>
+        public ConsoleHelper ConsoleHelper
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// Used by class diagram
+        /// </summary>
         public Grades Grades
         {
             get => default;
@@ -43,7 +70,7 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Input a mark between 0-100 for each 
+        /// Input a mark between 0-100 for each
         /// student and store in the marks array.
         /// </summary>
         public void InputMarks()
@@ -53,24 +80,23 @@ namespace ConsoleAppProject.App03
             Marks = new int[10];
             Students = new string[]
             {
-                "Luke", "Daniel", "Lewis",
-                "Aaron", "Max", "Bradley",
-                "Liam", "Thomas", "Robbie",
-                "Ben"
+                "Bradley","Max", "Luke",
+                "Daniel", "Robbie","Thomas",
+                "Ben", "Lewis", "Aaron",
+                "Leo"
             };
             GradeProfile = new int[(int)Grades.A + 1];
             Marks = new int[Students.Length];
 
             for (int i = 0; i < Students.Length; i++)
             {
-                Mark = (int)ConsoleHelper.InputNumber("Enter a mark for the student " + Students[i] + " " + (i + 1) + ": ");
+                Mark = (int)ConsoleHelper.InputNumber("Please enter mark for the student(s) " + Students[i] + " " + (i + 1) + ": ");
 
                 Marks[i] = Mark;
             }
 
-            Console.WriteLine("\nMarks have been entered for the student(s). \n");
+            Console.WriteLine("\nYou have successfullu entered a mark for the student(s)\n");
         }
-
 
         /// <summary>
         /// List all the students and display their
@@ -85,8 +111,8 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Convert a student mark to a grade
-        /// from F(fail) to A (First class).
+        /// Convert a student mark ti a grade
+        /// from F(fail) to A(Pass).
         /// </summary>
         public Grades ConvertToGrade(int Marks)
         {
@@ -106,12 +132,13 @@ namespace ConsoleAppProject.App03
             {
                 return Grades.B;
             }
-            else if (Marks >= LowestGradeA && Marks < HighestMark)
+            else if (Marks >= LowestGradeA && Marks <= HighestMark)
             {
                 return Grades.A;
             }
-            else
-                return Grades.F;
+
+            return Grades.F;
+
         }
 
         /// <summary>
@@ -135,6 +162,9 @@ namespace ConsoleAppProject.App03
             Mean = total / Marks.Length;
         }
 
+        /// <summary>
+        /// Outputs the mean, minimum and maximum marks
+        /// </summary>
         public void OutputStats()
         {
             OutputMean();
@@ -146,23 +176,23 @@ namespace ConsoleAppProject.App03
         public void OutputMean()
         {
             CalculateStats();
-            Console.Write(" \nThe mean mark is: " + $"{Mean}");
+            Console.Write(" \nThe mean mark is " + $"{Mean}");
         }
 
         public void OutputMinimum()
         {
             CalculateStats();
-            Console.Write(" \nThe lowest mark is: " + $"{Minimum}");
+            Console.Write(" \nThe lowest mark is " + $"{Minimum}");
         }
 
         public void OutputMaximum()
         {
             CalculateStats();
-            Console.Write(" \nThe highest mark is: " + $"{Maximum}");
+            Console.Write(" \nThe highest mark is" + $"{Maximum}");
         }
 
         /// <summary>
-        /// 
+        /// Calculates the the students grades.
         /// </summary>
         public void CalculateGradeProfile()
         {
@@ -178,6 +208,9 @@ namespace ConsoleAppProject.App03
             OutputGradeProfile();
         }
 
+        /// <summary>
+        /// Outputs the students grades and displays them. 
+        /// </summary>
         public void OutputGradeProfile()
         {
             Grades grade = Grades.F;
