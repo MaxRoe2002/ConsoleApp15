@@ -64,8 +64,8 @@ namespace ConsoleAppProject.App03
             InputMarks();
             OutputMarks();
             CalculateStats();
-            OutputStats();
             CalculateGradeProfile();
+            OutputStats();
 
         }
 
@@ -95,7 +95,7 @@ namespace ConsoleAppProject.App03
                 Marks[i] = Mark;
             }
 
-            Console.WriteLine("\nYou have successfullu entered a mark for the student(s)\n");
+            Console.WriteLine("\nYou have successfully entered a mark for the student(s)\n");
         }
 
         /// <summary>
