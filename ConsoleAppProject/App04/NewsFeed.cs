@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
 namespace ConsoleAppProject.App04
 {
     ///<summary>
@@ -61,7 +59,7 @@ namespace ConsoleAppProject.App04
             foreach (Post post in posts)
             {
                 post.Display();
-                Console.WriteLine();   // empty line between posts
+               Console.WriteLine();  
             }
         }
     }
