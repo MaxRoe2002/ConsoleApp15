@@ -11,12 +11,19 @@ namespace ConsoleAppProject.App04
 
 
         // username of the post's author
+        public int PostId { get; }
+
         public String Username { get; }
 
         public DateTime Timestamp { get; }
+
+        public static int instances = 0;
        
         public Post(string author)
         {
+            instances++;
+            PostId = instances;
+
             this.Username = author;
             Timestamp = DateTime.Now;
 
@@ -116,5 +123,9 @@ namespace ConsoleAppProject.App04
             }
         }
 
+        public static int GetNumberOfPosts()
+        {
+            return instances;
+        }
     }
 }
