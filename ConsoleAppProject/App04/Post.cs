@@ -122,10 +122,33 @@ namespace ConsoleAppProject.App04
                 return seconds + " seconds ago";
             }
         }
-
+        /// <summary>
+        /// Allows user to get the number of posts
+        /// </summary>
+        /// <returns></returns>
         public static int GetNumberOfPosts()
         {
             return instances;
+        }
+        /// <summary>
+        /// Allowers user to post a photo
+        /// </summary>
+        public PhotoPost PhotoPost
+        {
+            get => default;
+            set
+            {
+            }
+        }
+        /// <summary>
+        /// Allows a user to post a message
+        /// </summary>
+        public MessagePost MessagePost
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

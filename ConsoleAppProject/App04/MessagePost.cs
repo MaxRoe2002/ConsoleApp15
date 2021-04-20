@@ -10,6 +10,8 @@ namespace ConsoleAppProject.App04
     /// <author>
     /// Michael Kölling and David J. Barnes
     /// version 0.1
+    /// edited by Max Roe
+    /// verson 0.1
     /// </author>
     public class MessagePost : Post
     {
@@ -25,7 +27,7 @@ namespace ConsoleAppProject.App04
         /// <param name="text">
         /// The text of this post.
         /// </param>
-        public MessagePost(String author, String text) : base(author)
+        public MessagePost(String author, String text): base(author)
         {
             Message = text;
         }

@@ -15,6 +15,8 @@ namespace ConsoleAppProject.App04
     ///<author>
     ///  Michael Kölling and David J. Barnes
     ///  version 0.1
+    ///  edited by Max Roe
+    ///  version 0.1
     ///</author> 
     public class NewsFeed
     {
@@ -26,6 +28,14 @@ namespace ConsoleAppProject.App04
         public NewsFeed()
         {
             posts = new List<Post>();
+        }
+
+        public Post Post
+        {
+            get => default;
+            set
+            {
+            }
         }
 
 
@@ -59,15 +69,6 @@ namespace ConsoleAppProject.App04
             else
             {
                 Console.WriteLine($" \nThe post {id} has been deleted! \n");
-                
-                if(post is MessagePost mp)
-                {
-                    mp.Display();
-                }
-                else if(post is PhotoPost pp)
-                {
-                    pp.Display();
-                }
 
                 posts.Remove(post);
             }
