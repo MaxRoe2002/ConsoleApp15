@@ -6,7 +6,7 @@ namespace ConsoleAppProject.App04
 {
    public class NetworkApp
     {
-        private NewsFeed news = new NewsFeed();
+        private readonly NewsFeed news = new NewsFeed();
         public void DisplayMenu()
         {
             ConsoleHelper.OutputHeading("   Max's Feed");
@@ -16,7 +16,8 @@ namespace ConsoleAppProject.App04
                 "Post Message", "Post Image",
                 "Remove Post", "Display All",
                 "Display By Author", "Display by Date",
-                "Add Comment", "Like Posts", "Quit"
+                "Add Comment", "Like Posts", "Unlike Posts",
+                "Quit"
             };
 
             bool wantToQuit = false;
@@ -35,24 +36,45 @@ namespace ConsoleAppProject.App04
                     case 6: DisplayByDate(); break;
                     case 7: AddComment(); break;
                     case 8: LikePosts(); break;
-                    case 9: wantToQuit = true; break;
+                    case 9: UnlikePosts(); break;
+                    case 10: wantToQuit = true; break;
                 }
             } while (!wantToQuit);
         }
 
-        private void LikePosts()
+        private void UnlikePosts()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Unlike a post");
+            Post post = FindPost();
+
+            post.Unlike();
         }
 
+        private void LikePosts()
+        {
+            Console.WriteLine("Like a post");
+            Post post = FindPost();
+
+            post.Like();
+        }
+            
         private void AddComment()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Add a comment to a post");
+            Post post = FindPost();
+            post.Display();
+
+            Console.WriteLine("Enter your comment: ");
+            string comment = Console.ReadLine();
+            post.AddComment(comment);
         }
 
         private void DisplayByAuthor()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("What users posts do you want to find?");
+            string author = Console.ReadLine();
+
+            news.FindPostByUser(author);
         }
 
         private void DisplayByDate()
@@ -108,6 +130,12 @@ namespace ConsoleAppProject.App04
 
             ConsoleHelper.OutputTitle("You have successfully posted this message: ");
             post.Display();
+        }
+        public Post FindPost()
+        {
+            int postID;
+            postID = (int)ConsoleHelper.InputNumber("Enter the ID of the post");
+            return news.FindPost(postID);
         }
 
         private string InputName()

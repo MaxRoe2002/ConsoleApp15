@@ -83,9 +83,26 @@ namespace ConsoleAppProject.App04
                 }
             }
             return null;
-        }
-            
+        }          
+        public Post FindPostByUser(string author)
+        {
+            int counter = 0;
 
+            foreach (Post post in posts)
+            {
+                if (post.Username == author)
+                {
+                    post.Display();
+                    Console.WriteLine();
+                    counter++;
+                }
+                if (counter == 0)
+                {
+                    Console.WriteLine("A user has not been found");
+                }
+            }
+            return null;
+        }
 
         ///<summary>
         /// Show the news feed. Currently: print the news feed details to the
